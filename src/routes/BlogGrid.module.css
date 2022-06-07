@@ -1,0 +1,25 @@
+.blog-grid-wrapper {
+  display: grid;
+  column-gap: 35px;
+  row-gap: 15px;
+  margin-top: 50px;
+  padding: 0;
+}
+
+.blog-grid-title {
+  margin: 10px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .blog-grid-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .blog-grid-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
