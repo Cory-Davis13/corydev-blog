@@ -13,7 +13,6 @@ const BlogArticle = (props) => {
   function createMarkup() {
     return { __html: activePost.content.html };
   }
-  console.log("test");
 
   return (
     <div className={styles["article-wrapper"]}>
