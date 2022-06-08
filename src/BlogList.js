@@ -1,13 +1,23 @@
 import styles from "./BlogList.module.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const BlogList = (props) => {
   const [link, setLink] = useState("");
+  const [flag, setFlag] = useState(false);
+
   const activeLink = (e) => {
     let clickedTitle = e.target.innerText;
     setLink(clickedTitle);
   };
+
+  const handleAllPostClick = () => {
+    flag === false ? setFlag(true) : setFlag(false);
+  };
+
+  useEffect(() => {
+    props.allPostClick(flag);
+  }, [flag]);
 
   return (
     <ul className={styles["blog-list"]}>
@@ -32,9 +42,13 @@ const BlogList = (props) => {
           );
         })}
       <li className={styles["list-item"]}>
-        <Link to="/blog-posts" className={styles["list-link"]}>
-          All Posts
-        </Link>
+        <a
+          href="#"
+          onClick={handleAllPostClick}
+          className={styles["list-link"]}
+        >
+          All Posts...
+        </a>
       </li>
     </ul>
   );

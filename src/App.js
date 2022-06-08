@@ -2,6 +2,7 @@ import "./App.css";
 import BlogLanding from "./routes/BlogLanding";
 import { gql, request } from "graphql-request";
 import { useState, useEffect } from "react";
+import BlogGrid from "./routes/BlogGrid";
 
 const QUERY = gql`
   {
@@ -19,6 +20,7 @@ const QUERY = gql`
 
 function App() {
   const [posts, setPosts] = useState([]);
+  const [gridFlag, setGridFlag] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const data = await request(
@@ -26,14 +28,40 @@ function App() {
         QUERY
       ).then((data) => setPosts(data.posts));
     };
-
     fetchData();
   }, []);
 
+  const showGrid = (flag) => {
+    setGridFlag(flag);
+  };
+
   return (
     <div className="App">
+      <header className="site-header">
+        <ul className="nav-list">
+          <li className="list-item">
+            <a>Nav Items</a>
+          </li>
+          <li className="list-item">
+            <a href="#">Nav Items</a>
+          </li>
+          <li className="list-item">
+            <a href="#">Nav Items</a>
+          </li>
+          <li className="list-item">
+            <a href="#">Nav Items</a>
+          </li>
+          <li className="list-item">
+            <a href="#">Nav Items</a>
+          </li>
+        </ul>
+      </header>
       <main>
-        <BlogLanding blogPosts={posts} />
+        {gridFlag === false ? (
+          <BlogLanding blogPosts={posts} showGrid={showGrid} />
+        ) : (
+          <BlogGrid blogPosts={posts} handleGridClick={showGrid} />
+        )}
       </main>
     </div>
   );
