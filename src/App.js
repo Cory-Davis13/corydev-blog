@@ -28,7 +28,6 @@ function App() {
         QUERY
       ).then((data) => setPosts(data.posts));
     };
-    console.log("fetch fired");
     fetchData();
   }, []);
 
@@ -38,6 +37,25 @@ function App() {
 
   return (
     <div className="App">
+      <header className="site-header">
+        <ul className="nav-list">
+          <li className="list-item">
+            <a>Nav Items</a>
+          </li>
+          <li className="list-item">
+            <a href="#">Nav Items</a>
+          </li>
+          <li className="list-item">
+            <a href="#">Nav Items</a>
+          </li>
+          <li className="list-item">
+            <a href="#">Nav Items</a>
+          </li>
+          <li className="list-item">
+            <a href="#">Nav Items</a>
+          </li>
+        </ul>
+      </header>
       <main>
         {gridFlag === false ? (
           <BlogLanding blogPosts={posts} showGrid={showGrid} />

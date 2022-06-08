@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const BlogList = (props) => {
   const [link, setLink] = useState("");
   const [flag, setFlag] = useState(false);
+
   const activeLink = (e) => {
     let clickedTitle = e.target.innerText;
     setLink(clickedTitle);
@@ -13,6 +14,7 @@ const BlogList = (props) => {
   const handleAllPostClick = () => {
     flag === false ? setFlag(true) : setFlag(false);
   };
+
   useEffect(() => {
     props.allPostClick(flag);
   }, [flag]);
@@ -45,7 +47,7 @@ const BlogList = (props) => {
           onClick={handleAllPostClick}
           className={styles["list-link"]}
         >
-          All Posts
+          All Posts...
         </a>
       </li>
     </ul>
